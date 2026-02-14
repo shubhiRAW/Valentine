@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day Shona ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(-45deg, #ff6a88, #ff99ac, #ff758c, #ff6a88);
+    background-size: 400% 400%;
+    animation: gradient 12s ease infinite;
+    overflow:hidden;
+    color:white;
+    text-align:center;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.container{
+    background: rgba(255,255,255,0.15);
+    padding:50px;
+    border-radius:25px;
+    backdrop-filter: blur(15px);
+    box-shadow:0 0 40px rgba(255,255,255,0.3);
+    animation: fadeIn 2s ease-in-out;
+    width:90%;
+    max-width:500px;
+}
+
+h1{
+    font-size:2.5em;
+    margin-bottom:20px;
+}
+
+.typewriter{
+    font-size:1.2em;
+    min-height:60px;
+    margin-bottom:30px;
+}
+
+button{
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4e50;
+    font-size:1em;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+button:hover{
+    background:#ff4e50;
+    color:white;
+    transform:scale(1.1);
+}
+
+#surprise{
+    margin-top:20px;
+    font-size:1.3em;
+    opacity:0;
+    transition:1s;
+}
+
+.show{
+    opacity:1 !important;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh) scale(0.5);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-10vh) scale(1.5);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+    <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1>Happy Valentine's Day, Shona ❤️</h1>
+    <div class="typewriter" id="message"></div>
+    <button onclick="showLove()">Click For A Surprise 💌</button>
+    <div id="surprise">Shona, you are the most beautiful chapter of my life 💖</div>
+</div>
+
+<script>
+// Auto play music after first click
+document.addEventListener("click", function() {
+    document.getElementById("bgMusic").play();
+}, { once: true });
+
+// Typewriter Effect
+const text = "Shona, from the moment you came into my life, everything became more magical. You are my happiness, my peace, and my forever love.";
+let index = 0;
+
+function typeWriter() {
+    if (index < text.length) {
+        document.getElementById("message").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 50);
+    }
+}
+typeWriter();
+
+function showLove(){
+    document.getElementById("surprise").classList.add("show");
+}
+
+// Floating hearts
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+setInterval(createHeart, 300);
+
+</script>
+
+</body>
+</html>
